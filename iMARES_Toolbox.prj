@@ -1,0 +1,123 @@
+<deployment-project plugin="plugin.toolbox" plugin-version="1.0">
+  <configuration file="C:\iMARES-Scripts\toolbox\iMARES Toolbox.prj" location="C:\iMARES-Scripts\toolbox" name="iMARES Toolbox" target="target.toolbox" target-name="Package Toolbox">
+    <param.appname>iMARES Toolbox</param.appname>
+    <param.authnamewatermark>IMARES UCR</param.authnamewatermark>
+    <param.email />
+    <param.company>Universidad de Costa Rica</param.company>
+    <param.summary>Toolbox de MATLAB con funciones de graficado y análisis del oleaje para uso interno de IMARES UCR.</param.summary>
+    <param.description />
+    <param.screenshot />
+    <param.version>0.1.0</param.version>
+    <param.output>${PROJECT_ROOT}\iMARES Toolbox.mltbx</param.output>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.guid>de4b3762-382a-4fa6-97c5-45f81b390932</param.guid>
+    <param.exclude.filters />
+    <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
+    <param.examples />
+    <param.demosxml />
+    <param.apps />
+    <param.registered.apps />
+    <param.docs />
+    <param.getting.started.guide>${PROJECT_ROOT}\doc\GettingStarted.mlx</param.getting.started.guide>
+    <param.matlabpath.excludes />
+    <param.javaclasspath.excludes />
+    <param.exported.on.package>false</param.exported.on.package>
+    <param.required.addons>
+      <requiredaddons>
+        <requiredAddOn earliest="2.1.0.0" fromRepository="true" id="e5ac47b2-4a80-11e4-9553-005056977bd0" include="true" latest="latest">Wind Rose</requiredAddOn>
+      </requiredaddons>
+    </param.required.addons>
+    <param.matlab.project.id />
+    <param.matlab.project.name />
+    <param.release.start>R2024b</param.release.start>
+    <param.release.end>latest</param.release.end>
+    <param.release.current.only>false</param.release.current.only>
+    <param.compatiblity.windows>true</param.compatiblity.windows>
+    <param.compatiblity.macos>true</param.compatiblity.macos>
+    <param.compatiblity.linux>true</param.compatiblity.linux>
+    <param.compatiblity.matlabonline>true</param.compatiblity.matlabonline>
+    <param.installation.map />
+    <param.additional.sw.names />
+    <param.additional.sw.licenses />
+    <param.additional.sw.win.url />
+    <param.additional.sw.mac.url />
+    <param.additional.sw.linux.url />
+    <unset>
+      <param.email />
+      <param.description />
+      <param.screenshot />
+      <param.output />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.exclude.filters />
+      <param.exclude.pcodedmfiles />
+      <param.examples />
+      <param.demosxml />
+      <param.apps />
+      <param.registered.apps />
+      <param.docs />
+      <param.matlabpath.excludes />
+      <param.javaclasspath.excludes />
+      <param.exported.on.package />
+      <param.matlab.project.id />
+      <param.matlab.project.name />
+      <param.release.current.only />
+      <param.compatiblity.windows />
+      <param.compatiblity.macos />
+      <param.compatiblity.linux />
+      <param.compatiblity.matlabonline />
+      <param.installation.map />
+      <param.additional.sw.names />
+      <param.additional.sw.licenses />
+      <param.additional.sw.win.url />
+      <param.additional.sw.mac.url />
+      <param.additional.sw.linux.url />
+    </unset>
+    <fileset.rootdir>
+      <file>${PROJECT_ROOT}</file>
+    </fileset.rootdir>
+    <fileset.rootfiles>
+      <file>${PROJECT_ROOT}\auxiliar</file>
+      <file>${PROJECT_ROOT}\doc</file>
+      <file>${PROJECT_ROOT}\plot</file>
+    </fileset.rootfiles>
+    <fileset.depfun.included />
+    <fileset.depfun.excluded />
+    <fileset.package />
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}" name="iMARES Toolbox.mltbx" optional="false">C:\iMARES-Scripts\toolbox\iMARES Toolbox.mltbx</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2024b</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
