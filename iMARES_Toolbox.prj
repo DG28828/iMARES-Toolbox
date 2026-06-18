@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration file="C:\iMARES-Scripts\toolbox\iMARES Toolbox.prj" location="C:\iMARES-Scripts\toolbox" name="iMARES Toolbox" target="target.toolbox" target-name="Package Toolbox">
+  <configuration file="D:\RECOPE\10_Scripts\iMARES-Scripts\iMARES_Toolbox.prj" location="D:\RECOPE\10_Scripts\iMARES-Scripts" name="iMARES_Toolbox" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>iMARES Toolbox</param.appname>
     <param.authnamewatermark>IMARES UCR</param.authnamewatermark>
     <param.email />
@@ -7,7 +7,7 @@
     <param.summary>Toolbox de MATLAB con funciones de graficado y análisis del oleaje para uso interno de IMARES UCR.</param.summary>
     <param.description />
     <param.screenshot />
-    <param.version>0.1.0</param.version>
+    <param.version>0.2.0</param.version>
     <param.output>${PROJECT_ROOT}\iMARES Toolbox.mltbx</param.output>
     <param.products.name />
     <param.products.id />
@@ -82,15 +82,16 @@
       <file>${PROJECT_ROOT}</file>
     </fileset.rootdir>
     <fileset.rootfiles>
-      <file>${PROJECT_ROOT}\auxiliar</file>
-      <file>${PROJECT_ROOT}\doc</file>
-      <file>${PROJECT_ROOT}\plot</file>
+      <file>${PROJECT_ROOT}\.git</file>
+      <file>${PROJECT_ROOT}\.gitignore</file>
+      <file>${PROJECT_ROOT}\README.md</file>
+      <file>${PROJECT_ROOT}\toolbox</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
     <fileset.depfun.excluded />
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}" name="iMARES Toolbox.mltbx" optional="false">C:\iMARES-Scripts\toolbox\iMARES Toolbox.mltbx</file>
+      <file location="${PROJECT_ROOT}" name="iMARES Toolbox.mltbx" optional="false">D:\RECOPE\10_Scripts\iMARES-Scripts\iMARES Toolbox.mltbx</file>
     </build-deliverables>
     <workflow />
     <matlab>
