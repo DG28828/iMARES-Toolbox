@@ -10,6 +10,7 @@ function IM_plot_box_mensual(var, meses, varargin)
 % 'name'           : nombre de la figura
 % 'ext'            : extensión de la figura
 % 'save_dir'       : direccion para guardar figura
+% 'dpi'             : resolución de exportación.
 % 'Labels'         : etiquetas meses
 % 'ColorCaja'      : color de cajas
 % 'MedianColor'    : color mediana
@@ -20,9 +21,15 @@ function IM_plot_box_mensual(var, meses, varargin)
 % 'Notch'          : notch on/off
 % 'FigurePosition' : posición figura
 % 'ShowMedianLine' : true/false
+% 'ShowEmptyMonths' : true/false. Si es true, mantiene el eje x de 1 a 12
+%                     aunque solo existan datos en algunos meses.
 % 'Ylabel'         : etiqueta eje Y
 % 'Xlabel'         : etiqueta eje X
+% 'Limy'           : límites del eje Y (vector [y_inf, y_sup])
 %
+% NOTA
+% La función elimina automáticamente NaN e Inf antes de graficar. Si un mes
+% no tiene datos válidos, no se dibuja caja para ese mes.
 %----------------------------------------------------------
 
 p = inputParser;
@@ -30,6 +37,7 @@ p = inputParser;
 addParameter(p,'name', ' ');
 addParameter(p,'ext', 'png')
 addParameter(p,'save_dir', []);
+addParameter(p,'dpi', 300);
 addParameter(p,'Labels',{'Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'});
 addParameter(p,'ColorCaja',[0.4 0.6 0.4]);
 addParameter(p,'MedianColor',[0.4 0.6 0.4]);
@@ -40,24 +48,45 @@ addParameter(p,'BoxStyle','outline');
 addParameter(p,'Notch','on');
 addParameter(p,'FigurePosition',[327 415 913 463]);
 addParameter(p,'ShowMedianLine',true);
+addParameter(p,'ShowEmptyMonths', true);
 addParameter(p,'Ylabel','');
 addParameter(p,'Xlabel','Mes');
+addParameter(p, 'Limy', []);
 
 parse(p,varargin{:})
 opt = p.Results;
+
+%% Limpieza de datos
+var = var(:);
+meses = meses(:);
+
+idx_validos = isfinite(var) & isfinite(meses) & meses >= 1 & meses <= 12;
+var = var(idx_validos);
+meses = round(meses(idx_validos));
+
+if isempty(var)
+    warning('No hay datos válidos para generar el boxplot mensual.');
+    return
+end
+
+meses_presentes = unique(meses(:))';
+labels_presentes = opt.Labels(meses_presentes);
 
 %% Figura
 
 f = figure('Color','w','Position',opt.FigurePosition);
 
-boxplot(var, meses,...
-    'Labels',opt.Labels,...
-    'Whisker',opt.Whisker,...
-    'Symbol',opt.Symbol,...
-    'Colors',opt.ColorCaja,...
-    'Widths',opt.Widths,...
-    'BoxStyle',opt.BoxStyle,...
-    'Notch',opt.Notch)
+boxplot(var, meses, ...
+    'Labels', labels_presentes, ...
+    'Positions', meses_presentes, ...
+    'Whisker', opt.Whisker, ...
+    'Symbol', opt.Symbol, ...
+    'Colors', opt.ColorCaja, ...
+    'Widths', opt.Widths, ...
+    'BoxStyle', opt.BoxStyle, ...
+    'Notch', opt.Notch)
+
+ax = gca;
 
 %% Colorear cajas
 
@@ -81,8 +110,7 @@ medianas = findobj(gca,'Tag','Median');
 set(medianas,'Color',opt.MedianColor,'LineWidth',2)
 
 %% Línea conectando medianas
-
-if opt.ShowMedianLine
+if opt.ShowMedianLine && numel(medianas) >= 2
 
     x_mediana = zeros(1,length(medianas));
     y_mediana = zeros(1,length(medianas));
@@ -91,6 +119,9 @@ if opt.ShowMedianLine
         x_mediana(i) = mean(get(medianas(i),'XData'));
         y_mediana(i) = mean(get(medianas(i),'YData'));
     end
+
+    [x_mediana, idx_sort] = sort(x_mediana);
+    y_mediana = y_mediana(idx_sort);
 
     hold on
     plot(x_mediana,y_mediana,'--*','Color','k','LineWidth',2,'MarkerFaceColor','k')
@@ -106,16 +137,33 @@ ylabel(opt.Ylabel,'FontSize',14,'FontWeight','bold','FontName','Calibri')
 grid on
 set(gca,'FontSize',12,'FontName','Calibri','Box','off')
 
+if ~isempty(opt.Limy)
+    ylim(opt.Limy);
+end
+
+% Mantener el eje completo de enero a diciembre, dejando huecos en meses sin datos.
+if opt.ShowEmptyMonths
+    ax.XLim = [0.5 12.5];
+    ax.XTick = 1:12;
+    ax.XTickLabel = opt.Labels;
+else
+    ax.XTick = meses_presentes;
+    ax.XTickLabel = labels_presentes;
+end
+
 %% Guardar la figura
-dpi = 300;
-if ~isempty(opt.save_dir) % Guardar figura si existe la dirección
-    cd(opt.save_dir)
-    if strcmp(opt.ext, 'fig')
-        saveas(f, opt.name, opt.ext)
-    else
-        print(f, opt.name, strcat('-d',opt.ext), strcat('-r',num2str(dpi)))
+if ~isempty(opt.save_dir)
+    if ~isfolder(opt.save_dir)
+        mkdir(opt.save_dir)
     end
-    %cd(path)
+
+    filename = fullfile(opt.save_dir, opt.name);
+
+    if strcmpi(opt.ext, 'fig')
+        saveas(f, filename, opt.ext)
+    else
+        print(f, filename, strcat('-d',opt.ext), strcat('-r',num2str(opt.dpi)))
+    end
 end
 
 end
