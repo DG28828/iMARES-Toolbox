@@ -4,8 +4,8 @@ Toolbox de MATLAB para caracterizar estadísticamente bases de datos de parámet
 
 ## Funcionalidades principales
 
-- Procesamiento de bases de datos de **oleaje** con variables tipo altura de ola `H`, períodos `T` y dirección `Dir`.
-- Procesamiento de bases de datos de **viento** con variables tipo velocidad del viento `W` y dirección `Dw`.
+- Caracterización estadística total, mensual y estacional de bases de datos de **oleaje** con variables tipo altura de ola `H`, períodos `T` y dirección `Dir`.
+- Caracterización estadística total, mensual y estacional de bases de datos de **viento** con variables tipo velocidad del viento `W` y dirección `Dw`.
 - Filtrado por rango de fechas.
 - Particionado de series por mes.
 - Particionado por temporadas definidas por el usuario, por ejemplo temporada alta, baja y total.
