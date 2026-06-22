@@ -43,6 +43,15 @@ Variables esperadas:
 
 El script genera gráficos estadísticos para `W`, usando `Dw` como variable direccional para las rosas.
 
+### Notas de uso de los scipts
+
+- Los scripts `waves_plot_script.m` y `wind_plot_script.m` están pensados como plantillas editables, se recomienda copiar la plantilla fuera del directorio de origen y realizar las modificaciones necesarias.
+- La sección de importación debe adaptarse según el origen real de los datos.
+- Los meses sin datos válidos se omiten en PDF, CDF y rosas direccionales.
+- En los boxplots mensuales puede mantenerse el eje completo de enero a diciembre aunque existan meses vacíos.
+- Las funciones eliminan valores `NaN` e `Inf` en las etapas donde se requiere graficar o calcular estadísticos.
+- En el directorio de origen se incluyen datos de ejemplo y directorios de guardado, de forma que es posible ejecutar los script de plantilla para visualizar su funcionamiento.
+
 ## Funciones principales
 
 | Función | Descripción |
@@ -86,13 +95,4 @@ Clone o descargue el repositorio y agregue sus carpetas al path de MATLAB:
 repo_dir = "C:\ruta\al\repositorio";
 addpath(genpath(repo_dir));
 ```
-
-
-## Notas de uso de scipts
-
-- Los scripts `waves_plot_script.m` y `wind_plot_script.m` están pensados como plantillas editables.
-- La sección de importación debe adaptarse según el origen real de los datos.
-- Los meses sin datos válidos se omiten en PDF, CDF y rosas direccionales.
-- En los boxplots mensuales puede mantenerse el eje completo de enero a diciembre aunque existan meses vacíos.
-- Las funciones eliminan valores `NaN` e `Inf` en las etapas donde se requiere graficar o calcular estadísticos.
 
