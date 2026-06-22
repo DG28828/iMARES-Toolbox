@@ -1,6 +1,6 @@
 # iMARES Toolbox
 
-Toolbox de MATLAB para organizar, procesar y caracterizar estadísticamente bases de datos de parámetros de **oleaje** y **viento**. El toolbox permite trabajar con series temporales de parámetros, separarlas por meses y temporadas, generar gráficos estadísticos y exportar archivos de entrada para el programa **CAROL**.
+Toolbox de MATLAB para caracterizar estadísticamente bases de datos de parámetros de **oleaje** y **viento**. El toolbox permite trabajar con series temporales de parámetros, separarlas por meses y temporadas, generar gráficos estadísticos y exportar archivos de entrada para el programa **CAROL**.
 
 ## Funcionalidades principales
 
