@@ -24,7 +24,7 @@ Script tipo plantilla para caracterizar bases de datos de oleaje. Incluye las et
 
 Variables esperadas:
 
-- `fechas`: fechas asociadas a las variables (Año, Mes, Dia, Hora).
+- `fechas`: fechas asociadas a las variables (Año, Mes, Día, Hora).
 - `H`: variable asociada a altura de oleaje [m].
 - `T`: variable asociada al periodo [s].
 - `Dir`: variable asociada a la dirección del oleaje en convención náutica, desde donde viene el oleaje [°].
@@ -37,7 +37,7 @@ Script tipo plantilla para caracterizar bases de datos de viento. Sigue el mismo
 
 Variables esperadas:
 
-- `fechas`: fechas asociadas a las variables (Año, Mes, Dia, Hora).
+- `fechas`: fechas asociadas a las variables (Año, Mes, Día, Hora).
 - `W`: variable asociada a la velocidad del viento [m/s].
 - `Dw`: variable asociada a la dirección del viento en convención náutica, desde donde viene el viento [°].
 
